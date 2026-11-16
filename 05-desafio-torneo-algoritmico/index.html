@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Torneo Algorítmico</title>
+</head>
+<body>
+  <h1>🏆 Torneo Algorítmico</h1>
+  <p>Piedra, Papel o Tijera al mejor de 3 contra la máquina. El juego usa ventanas emergentes y muestra cada ronda en la consola (F12).</p>
+
+  <h2>Validación (Prueba de Escritorio)</h2>
+
+  <h3>¿Por qué el operador lógico <code>||</code> (O) original no servía para detener el torneo?</h3>
+  <p>
+    Con <code>victoriasUsuario &lt; 3 || victoriasMaquina &lt; 3</code> el bucle sigue mientras
+    <strong>alguno</strong> de los dos tenga menos de 3 victorias. Si el usuario llega a 3 pero la máquina
+    tiene 1, la segunda condición sigue siendo <code>true</code> y el torneo continúa. Solo se detendría
+    cuando los dos llegaran a 3, cosa que en un "mejor de 3" nunca debería pasar. Por eso hay que usar
+    <code>&amp;&amp;</code>: el bucle sigue solo mientras <strong>los dos</strong> tengan menos de 3.
+  </p>
+
+  <h3>¿Qué línea garantiza que el bucle eventualmente devuelva <code>false</code>?</h3>
+  <p>
+    Las líneas de los acumuladores, <code>victoriasUsuario++</code> y <code>victoriasMaquina++</code>.
+    Cada ronda que no es empate suma 1 a alguno de los dos, así que tarde o temprano uno llega a 3 y la
+    condición <code>victoriasUsuario &lt; 3 &amp;&amp; victoriasMaquina &lt; 3</code> pasa a ser <code>false</code>.
+  </p>
+
+  <script src="script.js"></script>
+</body>
+</html>
